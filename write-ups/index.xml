@@ -1,21 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Miast.io</title>
-    <link>https://www.miast.io/</link>
-    <description>Recent content on Miast.io</description>
+    <title>Write-ups on Miast.io</title>
+    <link>https://www.miast.io/write-ups/</link>
+    <description>Recent content in Write-ups on Miast.io</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 13 Dec 2023 14:32:57 +0000</lastBuildDate><atom:link href="https://www.miast.io/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Projects</title>
-      <link>https://www.miast.io/projects/</link>
-      <pubDate>Wed, 13 Dec 2023 14:38:10 +0000</pubDate>
-      
-      <guid>https://www.miast.io/projects/</guid>
-      <description></description>
-    </item>
-    
+    <lastBuildDate>Wed, 13 Dec 2023 14:32:57 +0000</lastBuildDate><atom:link href="https://www.miast.io/write-ups/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>HelloWorld</title>
       <link>https://www.miast.io/write-ups/helloworld/</link>
