@@ -2,13 +2,22 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://www.miast.io/posts/helloworld/</loc>
-    <lastmod>2023-12-13T13:51:17+00:00</lastmod>
-  </url><url>
     <loc>https://www.miast.io/</loc>
-    <lastmod>2023-12-13T13:51:17+00:00</lastmod>
+    <lastmod>2023-12-13T14:03:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.miast.io/projects/</loc>
+    <lastmod>2023-12-13T14:03:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.miast.io/projects/test/</loc>
+    <lastmod>2023-12-13T14:03:00+00:00</lastmod>
   </url><url>
     <loc>https://www.miast.io/posts/</loc>
+    <lastmod>2023-12-13T13:53:01+00:00</lastmod>
+  </url><url>
+    <loc>https://www.miast.io/posts/test/</loc>
+    <lastmod>2023-12-13T13:53:01+00:00</lastmod>
+  </url><url>
+    <loc>https://www.miast.io/posts/helloworld/</loc>
     <lastmod>2023-12-13T13:51:17+00:00</lastmod>
   </url><url>
     <loc>https://www.miast.io/categories/</loc>
