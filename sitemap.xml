@@ -2,10 +2,28 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://www.miast.io/about/</loc>
-    <lastmod>2023-12-13T14:49:04+00:00</lastmod>
+    <loc>https://www.miast.io/tags/forensics/</loc>
+    <lastmod>2024-02-20T15:04:17+00:00</lastmod>
+  </url><url>
+    <loc>https://www.miast.io/tags/jeporadyctf/</loc>
+    <lastmod>2024-02-20T15:04:17+00:00</lastmod>
   </url><url>
     <loc>https://www.miast.io/</loc>
+    <lastmod>2024-02-20T15:04:17+00:00</lastmod>
+  </url><url>
+    <loc>https://www.miast.io/tags/</loc>
+    <lastmod>2024-02-20T15:04:17+00:00</lastmod>
+  </url><url>
+    <loc>https://www.miast.io/write-ups/illusion/</loc>
+    <lastmod>2024-02-20T15:04:17+00:00</lastmod>
+  </url><url>
+    <loc>https://www.miast.io/write-ups/</loc>
+    <lastmod>2024-02-20T15:04:17+00:00</lastmod>
+  </url><url>
+    <loc>https://www.miast.io/tags/writeup/</loc>
+    <lastmod>2024-02-20T15:04:17+00:00</lastmod>
+  </url><url>
+    <loc>https://www.miast.io/about/</loc>
     <lastmod>2023-12-13T14:49:04+00:00</lastmod>
   </url><url>
     <loc>https://www.miast.io/projects/</loc>
@@ -15,12 +33,6 @@
     <lastmod>2023-12-01T14:32:57+00:00</lastmod>
   </url><url>
     <loc>https://www.miast.io/write-ups/helloworld/</loc>
-    <lastmod>2023-12-01T14:32:57+00:00</lastmod>
-  </url><url>
-    <loc>https://www.miast.io/tags/</loc>
-    <lastmod>2023-12-01T14:32:57+00:00</lastmod>
-  </url><url>
-    <loc>https://www.miast.io/write-ups/</loc>
     <lastmod>2023-12-01T14:32:57+00:00</lastmod>
   </url><url>
     <loc>https://www.miast.io/categories/</loc>
