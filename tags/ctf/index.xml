@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ctf on Miast.io</title>
+    <link>https://www.miast.io/tags/ctf/</link>
+    <description>Recent content in ctf on Miast.io</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 20 Feb 2024 15:04:17 +0000</lastBuildDate><atom:link href="https://www.miast.io/tags/ctf/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>UofTCTF 2024 - Illusion</title>
+      <link>https://www.miast.io/write-ups/illusion/</link>
+      <pubDate>Tue, 20 Feb 2024 15:04:17 +0000</pubDate>
+      
+      <guid>https://www.miast.io/write-ups/illusion/</guid>
+      <description>UofTCTF 2024 forensics/Illusion Writeup We&amp;rsquo;re given a PCAP file with a lot of traffic to and from one IP address. Looking into it, its mainly http traffic, with some calls to a cloned Google.com page, and a get request for an image. The requests to the images caught my interest, as they don&amp;rsquo;t return any image data, just a 200OK.
+The GUID string looks like base64, but doesn&amp;rsquo;t decode to anything.</description>
+    </item>
+    
+  </channel>
+</rss>
