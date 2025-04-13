@@ -168,52 +168,43 @@
         <p>
             <h1 id="uoftctf-2024">UofTCTF 2024</h1>
 <h2 id="forensicsillusion-writeup">forensics/Illusion Writeup</h2>
-<p>We&rsquo;re given a PCAP file with a lot of traffic to and from one IP address. Looking into it, its mainly http traffic, with some calls to a cloned Google.com page, and a get request for an image. The requests to the images caught my interest, as they don&rsquo;t return any image data, just a 200OK.</p>
-<p><img src="https://i.ibb.co/8gWC5Dw/wireshark.png" alt="Wireshark traffic">
+<p>We&rsquo;re given a PCAP file with a lot of traffic to and from one IP address. Looking into it, it&rsquo;s mainly HTTP traffic, with some calls to a cloned Google.com page, and a GET request for an image. The requests to the images caught my interest, as they don&rsquo;t return any image data, just a 200 OK.</p>
+<p><img src="https://i.ibb.co/8gWC5Dw/wireshark.png" alt="Wireshark traffic"><br>
 The GUID string looks like base64, but doesn&rsquo;t decode to anything.</p>
-<p>After a bit of Googling I came across this <a href="https://nasbench.medium.com/understanding-detecting-c2-frameworks-trevorc2-2a9ce6f1f425">Medium blog</a> talking about the trevorC2 Framework. In this post it mentions how the C2 framework will clone a webpage like Google.com, then it will send the C2 server data through the /images?guid parameter. Heres the config for the C2 Server.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>URL <span style="color:#f92672">=</span> (<span style="color:#e6db74">&#34;https://www.google.com&#34;</span>)  <span style="color:#75715e"># URL to clone to house a legitimate website</span>
+<p>After a bit of Googling I came across this <a href="https://nasbench.medium.com/understanding-detecting-c2-frameworks-trevorc2-2a9ce6f1f425">Medium blog</a> discussing the TrevorC2 framework. It mentions how the C2 clones a site like Google.com and sends data via <code>/images?guid=...</code>. Here&rsquo;s the config from the C2 server:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>URL <span style="color:#f92672">=</span> (<span style="color:#e6db74">&#34;https://www.google.com&#34;</span>)
 </span></span><span style="display:flex;"><span>USER_AGENT <span style="color:#f92672">=</span> (<span style="color:#e6db74">&#34;User-Agent: Mozilla/5.0 (Windows NT 6.3; Trident/7.0; rv:11.0) like Gecko&#34;</span>)
 </span></span><span style="display:flex;"><span>ROOT_PATH_QUERY <span style="color:#f92672">=</span> (<span style="color:#e6db74">&#34;/&#34;</span>)
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># THIS FLAG IS WHERE THE CLIENT WILL SUBMIT VIA URL AND QUERY STRING GET PARAMETER</span>
 </span></span><span style="display:flex;"><span>SITE_PATH_QUERY <span style="color:#f92672">=</span> (<span style="color:#e6db74">&#34;/images&#34;</span>)
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># THIS IS THE QUERY STRING PARAMETER USED</span>
 </span></span><span style="display:flex;"><span>QUERY_STRING <span style="color:#f92672">=</span> (<span style="color:#e6db74">&#34;guid=&#34;</span>)
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># THIS IS THE NAME USED IN THE COOKIE FOR THE COMMUNICATION SESSIONID</span>
 </span></span><span style="display:flex;"><span>COOKIE_SESSIONID_STRING <span style="color:#f92672">=</span> (<span style="color:#e6db74">&#34;sessionid&#34;</span>)
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># THIS IS THE LENGTH OF THE COMMUNICATION SESSIONID</span>
 </span></span><span style="display:flex;"><span>COOKIE_SESSIONID_LENGTH <span style="color:#f92672">=</span> (<span style="color:#ae81ff">15</span>)
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># STUB FOR DATA - THIS IS USED TO SLIP DATA INTO THE SITE, WANT TO CHANGE THIS SO ITS NOT STATIC</span>
 </span></span><span style="display:flex;"><span>STUB <span style="color:#f92672">=</span> (<span style="color:#e6db74">&#34;oldcss=&#34;</span>)
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Turn to True for SSL support</span>
 </span></span><span style="display:flex;"><span>SSL <span style="color:#f92672">=</span> <span style="color:#66d9ef">False</span>
-</span></span><span style="display:flex;"><span>CERT_FILE <span style="color:#f92672">=</span> (<span style="color:#e6db74">&#34;&#34;</span>)  <span style="color:#75715e"># Your Certificate for SSL</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># THIS IS OUR ENCRYPTION KEY - THIS NEEDS TO BE THE SAME ON BOTH SERVER AND CLIENT FOR APPROPRIATE DECRYPTION. RECOMMEND CHANGING THIS FROM THE DEFAULT KEY</span>
+</span></span><span style="display:flex;"><span>CERT_FILE <span style="color:#f92672">=</span> (<span style="color:#e6db74">&#34;&#34;</span>)
 </span></span><span style="display:flex;"><span>CIPHER <span style="color:#f92672">=</span> (<span style="color:#e6db74">&#34;Tr3v0rC2R0x@nd1s@w350m3#TrevorForget&#34;</span>)
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Response for website when browsing directories that do not exist if directly going to SITE_PATH_QUERY</span>
 </span></span><span style="display:flex;"><span>NOTFOUND<span style="color:#f92672">=</span>(<span style="color:#e6db74">&#34;Page not found.&#34;</span>)
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Redirect the victim if browsing website to the cloned URL instead of presenting it. ON/OFF</span>
 </span></span><span style="display:flex;"><span>REDIRECT <span style="color:#f92672">=</span>(<span style="color:#e6db74">&#34;ON&#34;</span>)
-</span></span></code></pre></div><p>This all matches what we found in the PCAP. So it&rsquo;s safe to assume its using the TrevorC2 to communicate.</p>
-<p>Looking at the <a href="https://github.com/trustedsec/trevorc2">source code</a> we can see that to decode the transferred data we need to base64 decode it, then decrypt the AES.</p>
+</span></span></code></pre></div><p>This all matches the PCAP, so it&rsquo;s likely TrevorC2 is being used.</p>
+<p>From the <a href="https://github.com/trustedsec/trevorc2">source code</a>, to decode the data:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> __init__(self, key):
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>bs <span style="color:#f92672">=</span> <span style="color:#ae81ff">16</span>
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>key <span style="color:#f92672">=</span> hashlib<span style="color:#f92672">.</span>sha256(AESCipher<span style="color:#f92672">.</span>str_to_bytes(key))<span style="color:#f92672">.</span>digest()
-</span></span><span style="display:flex;"><span><span style="color:#f92672">...</span>
+</span></span><span style="display:flex;"><span>    self<span style="color:#f92672">.</span>bs <span style="color:#f92672">=</span> <span style="color:#ae81ff">16</span>
+</span></span><span style="display:flex;"><span>    self<span style="color:#f92672">.</span>key <span style="color:#f92672">=</span> hashlib<span style="color:#f92672">.</span>sha256(AESCipher<span style="color:#f92672">.</span>str_to_bytes(key))<span style="color:#f92672">.</span>digest()
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">decrypt</span>(self, enc):
-</span></span><span style="display:flex;"><span>        enc <span style="color:#f92672">=</span> base64<span style="color:#f92672">.</span>b64decode(enc)
-</span></span><span style="display:flex;"><span>        iv <span style="color:#f92672">=</span> enc[:AES<span style="color:#f92672">.</span>block_size]
-</span></span><span style="display:flex;"><span>        cipher <span style="color:#f92672">=</span> AES<span style="color:#f92672">.</span>new(self<span style="color:#f92672">.</span>key, AES<span style="color:#f92672">.</span>MODE_CBC, iv)
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>_unpad(cipher<span style="color:#f92672">.</span>decrypt(enc[AES<span style="color:#f92672">.</span>block_size:]))<span style="color:#f92672">.</span>decode(<span style="color:#e6db74">&#39;utf-8&#39;</span>)
-</span></span></code></pre></div><p>From this snippet we know that the IV is the first 16 bytes of the data, and the cipher is the sha256 of the key, which was <code>Tr3v0rC2R0x@nd1s@w350m3#TrevorForget</code>.</p>
-<p>Using this information we can use cyberchef to make a recipe to decode the GUID data, we had to use 2 Base64 decodes rather than one. I&rsquo;m assuming this is from the client base64 encoding it to send over HTTP. However, the flag is not in any of the exfil data. We do find that a flag.txt was created on the analysts desktop. As well as other traffic showing that there was a reverse shell on the system.
-<img src="https://i.ibb.co/SwNC5Cq/cyberchef.png" alt="CyberchefRecipe"></p>
-<p>The next step was the decode the instructions from the C2, to see if any of the commands contain the flag. The instructions from the C2 are taken from a commented stub at the bottom of the cloned Google pages.
-<img src="https://i.ibb.co/99188Sk/oldcsstag.png" alt="oldcss tag"></p>
-<p>The C2 Instructions are encoded similar to the the guid data, but there is only 1 base64 encoding. There&rsquo;s a lot of requests with the oldcss stub, so I exported all the HTML objects, and then used grep to find all the matches.
-<img src="https://i.ibb.co/QJ6s9RQ/grepoldcss.png" alt="Grepping oldcss"></p>
-<p>The longest string caught my attention so I tried that first, and got the flag.
-<img src="https://i.ibb.co/ySz4Km3/flag.png" alt="getting the flag">
+</span></span><span style="display:flex;"><span>    enc <span style="color:#f92672">=</span> base64<span style="color:#f92672">.</span>b64decode(enc)
+</span></span><span style="display:flex;"><span>    iv <span style="color:#f92672">=</span> enc[:AES<span style="color:#f92672">.</span>block_size]
+</span></span><span style="display:flex;"><span>    cipher <span style="color:#f92672">=</span> AES<span style="color:#f92672">.</span>new(self<span style="color:#f92672">.</span>key, AES<span style="color:#f92672">.</span>MODE_CBC, iv)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>_unpad(cipher<span style="color:#f92672">.</span>decrypt(enc[AES<span style="color:#f92672">.</span>block_size:]))<span style="color:#f92672">.</span>decode(<span style="color:#e6db74">&#39;utf-8&#39;</span>)
+</span></span></code></pre></div><p>The IV is the first 16 bytes, and the AES key is SHA256 of <code>Tr3v0rC2R0x@nd1s@w350m3#TrevorForget</code>.</p>
+<p>In CyberChef, we needed <strong>two</strong> base64 decodes before the AES decryption. Likely due to client-side base64 encoding before HTTP transmission. No flag was in the exfiltrated data, but we saw that a <code>flag.txt</code> was created and a reverse shell established.</p>
+<p><img src="https://i.ibb.co/SwNC5Cq/cyberchef.png" alt="CyberchefRecipe"></p>
+<p>Next, we analysed the C2 instructions. They&rsquo;re stored in an HTML comment using the <code>oldcss=</code> stub:</p>
+<p><img src="https://i.ibb.co/99188Sk/oldcsstag.png" alt="oldcss tag"></p>
+<p>These are only single base64-encoded. We exported all HTML objects and grepped for <code>oldcss=</code>:</p>
+<p><img src="https://i.ibb.co/QJ6s9RQ/grepoldcss.png" alt="Grepping oldcss"></p>
+<p>The longest string stood out. Decoding it gave the flag:</p>
+<p><img src="https://i.ibb.co/ySz4Km3/flag.png" alt="getting the flag"><br>
 <code>uoftctf{Tr3V0r_C2_1s_H4rd_T0_D3t3c7}</code></p>
 
         </p>

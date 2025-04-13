@@ -6,15 +6,38 @@
     <description>Recent content in writeup on Miast.io</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 20 Feb 2024 15:04:17 +0000</lastBuildDate><atom:link href="https://www.miast.io/tags/writeup/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 22 Mar 2024 20:31:38 +0000</lastBuildDate><atom:link href="https://www.miast.io/tags/writeup/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Open ECSC File Share</title>
+      <link>https://www.miast.io/write-ups/fileshare-writeup/</link>
+      <pubDate>Fri, 22 Mar 2024 20:31:38 +0000</pubDate>
+      
+      <guid>https://www.miast.io/write-ups/fileshare-writeup/</guid>
+      <description>This is a writeup for the OpenECSC2024 challenge File Share. The source code and official writeup can be found at the official OpenECSC Github.
+Challenge Description You can now share your files for free thanks to our new disruptive technology! Site: https://fileshare.challs.open.ecsc2024.it
+Challenge Analysis Reviewing the source code, there are two main points of interest:
+1. support.php if (preg_match(&amp;#39;/^[a-f0-9]{30}$/&amp;#39;, $fileid) === 1) { $url = &amp;#39;http://&amp;#39; . getenv(&amp;#39;HEADLESS_HOST&amp;#39;); $chall_url = &amp;#39;http://&amp;#39; .</description>
+    </item>
+    
     <item>
       <title>UofTCTF 2024 - Illusion</title>
       <link>https://www.miast.io/write-ups/illusion/</link>
       <pubDate>Tue, 20 Feb 2024 15:04:17 +0000</pubDate>
       
       <guid>https://www.miast.io/write-ups/illusion/</guid>
-      <description>UofTCTF 2024 forensics/Illusion Writeup We&amp;rsquo;re given a PCAP file with a lot of traffic to and from one IP address. Looking into it, its mainly http traffic, with some calls to a cloned Google.com page, and a get request for an image. The requests to the images caught my interest, as they don&amp;rsquo;t return any image data, just a 200OK.
+      <description>UofTCTF 2024 forensics/Illusion Writeup We&amp;rsquo;re given a PCAP file with a lot of traffic to and from one IP address. Looking into it, it&amp;rsquo;s mainly HTTP traffic, with some calls to a cloned Google.com page, and a GET request for an image. The requests to the images caught my interest, as they don&amp;rsquo;t return any image data, just a 200 OK.
 The GUID string looks like base64, but doesn&amp;rsquo;t decode to anything.</description>
+    </item>
+    
+    <item>
+      <title>Cybergon CTF</title>
+      <link>https://www.miast.io/write-ups/cybergon-ctf-2023/</link>
+      <pubDate>Wed, 30 Aug 2023 16:13:04 +0100</pubDate>
+      
+      <guid>https://www.miast.io/write-ups/cybergon-ctf-2023/</guid>
+      <description>Forensics - XIPPER This file is something wrong. Can you open it before the winter season?
+In this challenge we are initially given a file called xipper.PNG. Running file on the PNG shows that it is actually a ZIP file. However, when attempting to unzip the file we get the following error:
+$ unzip xipper.zip Archive: xipper.zip file #1: bad zipfile offset (local header sig): 0 Opening the file in a hex editor, we see the first 4 bytes are wrong.</description>
     </item>
     
   </channel>

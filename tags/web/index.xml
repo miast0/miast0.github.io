@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>web on Miast.io</title>
+    <link>https://www.miast.io/tags/web/</link>
+    <description>Recent content in web on Miast.io</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 22 Mar 2024 20:31:38 +0000</lastBuildDate><atom:link href="https://www.miast.io/tags/web/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Open ECSC File Share</title>
+      <link>https://www.miast.io/write-ups/fileshare-writeup/</link>
+      <pubDate>Fri, 22 Mar 2024 20:31:38 +0000</pubDate>
+      
+      <guid>https://www.miast.io/write-ups/fileshare-writeup/</guid>
+      <description>This is a writeup for the OpenECSC2024 challenge File Share. The source code and official writeup can be found at the official OpenECSC Github.
+Challenge Description You can now share your files for free thanks to our new disruptive technology! Site: https://fileshare.challs.open.ecsc2024.it
+Challenge Analysis Reviewing the source code, there are two main points of interest:
+1. support.php if (preg_match(&amp;#39;/^[a-f0-9]{30}$/&amp;#39;, $fileid) === 1) { $url = &amp;#39;http://&amp;#39; . getenv(&amp;#39;HEADLESS_HOST&amp;#39;); $chall_url = &amp;#39;http://&amp;#39; .</description>
+    </item>
+    
+  </channel>
+</rss>
