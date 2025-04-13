@@ -6,7 +6,19 @@
     <description>Recent content on Miast.io</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 22 Mar 2024 20:31:38 +0000</lastBuildDate><atom:link href="https://www.miast.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 13 Apr 2025 21:51:10 +0100</lastBuildDate><atom:link href="https://www.miast.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>THM - Brooklyn Nine Nine</title>
+      <link>https://www.miast.io/write-ups/brooklyn-nine-nine/</link>
+      <pubDate>Sun, 13 Apr 2025 21:51:10 +0100</pubDate>
+      
+      <guid>https://www.miast.io/write-ups/brooklyn-nine-nine/</guid>
+      <description>Room Description Brooklyn Nine Nine
+This room is aimed for beginner level hackers but anyone can try to hack this box. There are two main intended ways to root the box.
+Writeup Enumeration As usual I start off with a nmap scan with the default scripts and enumerate version tags enabled to get a good baseline understanding of what ports and services are enabled.
+nmap -sC -sV -oN nmapScan 10.10.x.x Starting Nmap 7.</description>
+    </item>
+    
     <item>
       <title>Open ECSC File Share</title>
       <link>https://www.miast.io/write-ups/fileshare-writeup/</link>
