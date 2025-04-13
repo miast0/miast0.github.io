@@ -24,9 +24,8 @@ The GUID string looks like base64, but doesn&amp;rsquo;t decode to anything.</de
       
       <guid>https://www.miast.io/write-ups/helloworld/</guid>
       <description>Hello World Hello!
-My name is Miasto, I&amp;rsquo;m a security researcher based in Ireland. Currently my research areas are focused around Cyber Resilience, but I&amp;rsquo;ve previously done research on P2P Botnets and IoT malware, and different emerging threats.
-I&amp;rsquo;m an avid competitor in CTFs, representing team Ireland in the ECSC and WorldSkills. I regularly compete in online CTFs, mainly focusing in forensics, rev and misc.
-I plan to use this blog as a way to publicse any write ups and research, as well as to just get used to writting.</description>
+My name is Miasto, I&amp;rsquo;m a security researcher and PhD student based in Ireland. I&amp;rsquo;m currently researching Cyber Resilience vs Cybersecurity, and using Cyber Range technologies for pentesting and security assurance. I&amp;rsquo;ve previously done research on P2P Botnets and IoT malware, and different emerging threats. I try to keep on eye on developments in that space, it&amp;rsquo;s still something I&amp;rsquo;ve a keen interest in.
+I&amp;rsquo;m also an avid CTF player, both in jeporady and AD.</description>
     </item>
     
   </channel>
